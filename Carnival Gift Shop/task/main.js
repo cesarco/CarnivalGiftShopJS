@@ -1,5 +1,5 @@
 const input = require('sync-input');
-
+let number = 0;
 let items = {
     1: {
         name: "Teddy Bear",
@@ -56,15 +56,15 @@ let tickects = [0];
 while(choice != 5){
 
     if(choice === 1){
-        let number = Number(input("Enter the number of the gift you want to get: "));
+        number = Number(input("Enter the number of the gift you want to get: "));
         let giftName = items[number].name;
         let giftPrice = items[number].price;
 
         console.log(`Here you go, one ${giftName}!`);
         tickects[0] = tickects[0] - giftPrice;
         console.log(`Total tickets: ${tickects[0]}`);
-        delete items[number];
-
+        noItem(number);
+        delete items[number]
     }else if(choice === 2){
 
         let n = Number(input("Enter the ticket amount: "));
@@ -75,10 +75,60 @@ while(choice != 5){
 
         console.log(`Total tickets: ${tickects[0]}`);
     }else if(choice === 4){
+        let items2 = {
+            1: {
+                name: "Teddy Bear",
+                price: 10
+            },
+            2: {
+                name: "Big Red Ball",
+                price: 5
+            },
+            3: {
+                name: "Huge Bear",
+                price: 50
+            },
+            4: {
+                name: "Candy",
+                price: 8
+            },
+            5: {
+                name: "Stuffed Tiger",
+                price: 15
+            },
+            6: {
+                name: "Stuffed Dragon",
+                price: 30
+            },
+            7: {
+                name: "Skateboard",
+                price: 100
+            },
+            8: {
+                name: "Toy Car",
+                price: 25
+            },
+            9: {
+                name: "Basketball",
+                price: 20
+            },
+            10: {
+                name: "Scary Mask",
+                price: 75
+            }
+        };
+        let numberDel = noItem();
         console.log(`Here's the list of gifts:`);
         console.log();
+
         for(let i = 1; i < 11; i++){
-            console.log(`${i}- ${items[i].name}, Cost: ${items[i].price} tickets`);
+
+            if(i == numberDel){
+                continue;
+            }else{
+                console.log(`${i}- ${items2[i].name}, Cost: ${items2[i].price} tickets`);
+
+            }
         }
     }
     console.log("\nWhat do you want to do?");
@@ -87,6 +137,9 @@ while(choice != 5){
 }
 console.log(`Have a nice day!`);
 
+function noItem(){
+   return  number;
+}
 
 
 
